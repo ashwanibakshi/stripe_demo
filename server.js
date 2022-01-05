@@ -60,10 +60,10 @@ app.post('/create-checkout-session', async (req, res) => {
         var publicKey = "pk_test_51K9WfSSI1lAYXJ139AmuYXYUU4owTziKe6KiiCydW2HVlH0Uo0TBtPi1WxslJqAoZakQ7TpXLlNFWA4pZakXWNId00GTTlvhh4";
         var basicPlan = "price_1KCmITSI1lAYXJ13zAC34VJi";
         var proPlan =  "prod_KsXNjb3P94x9GD";
-          const planId  = proPlan;
+          const planId  = basicPlan;
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-            //   customer_email:"demo@d.com",
+              customer_email:"demo2@d.com",
               line_items: [
                 {
                   price: basicPlan,
@@ -72,7 +72,7 @@ app.post('/create-checkout-session', async (req, res) => {
           
                 },
               ],
-              customer:"cus_KuMKmV0P2YDnY1",
+              // customer:"001",
               mode: 'subscription',
       success_url: 'http://localhost:4242',
       cancel_url: 'http://localhost:4242',
@@ -94,11 +94,11 @@ app.post('/create-checkout-session', async (req, res) => {
     const returnUrl = "http://localhost:3000/showdetails.html";
     console.log("customer",checkoutSession)
     const portalSession = await stripe.billingPortal.sessions.create({
-      customer: checkoutSession.customer,
+      customer : checkoutSession.id,
       return_url: returnUrl,
     });
   
-    res.redirect(303, portalSession);
+    res.redirect(303,portalSession);
   });
 
 
