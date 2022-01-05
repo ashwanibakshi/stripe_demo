@@ -1,5 +1,6 @@
 const e = require("express");
 const express = require("express");
+require("dotenv").config();
 const stripe  = require("stripe")(process.env.secret_key)
 
 const app = express();
@@ -59,14 +60,14 @@ app.use(express.json());
 app.post('/create-checkout-session', async (req, res) => {
        
         var basicPlan = "price_1KCmITSI1lAYXJ13zAC34VJi";
-        var proPlan =  "prod_KsXNjb3P94x9GD";
-          const planId  = basicPlan;
+        var proPlan =  "price_1KCmJ7SI1lAYXJ13JKGRLPSp";
+          // const planId  = basicPlan;
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
               customer_email:"demo2@d.com",
               line_items: [
                 {
-                  price: basicPlan,
+                  price: proPlan,
                   // For metered billing, do not pass quantity
                   quantity: 1,
           
