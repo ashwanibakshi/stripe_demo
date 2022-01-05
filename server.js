@@ -1,6 +1,6 @@
 const e = require("express");
 const express = require("express");
-const stripe  = require("stripe")("sk_test_51K9WfSSI1lAYXJ13EHY37qzlZXmtowoSwMp1ISxg6vEx3WPiAlRMdvS9AQxexPagkzsHnDt8OeuS3mIfOui1K6TT005cVxBfGN");
+const stripe  = require("stripe")("");
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use(express.json());
 
 // app.post("/create-checkout-session", async (req, res) => {
 //     // const domainURL = process.env.DOMAIN;
-//     publicKey = "pk_test_51K9WfSSI1lAYXJ139AmuYXYUU4owTziKe6KiiCydW2HVlH0Uo0TBtPi1WxslJqAoZakQ7TpXLlNFWA4pZakXWNId00GTTlvhh4",
+//    
 //     basicPlan = "price_1KCmITSI1lAYXJ13zAC34VJi",
 //     proPlan =  "price_1KCmJ7SI1lAYXJ13JKGRLPSp"
 
@@ -57,7 +57,7 @@ app.use(express.json());
 //   });
   
 app.post('/create-checkout-session', async (req, res) => {
-        var publicKey = "pk_test_51K9WfSSI1lAYXJ139AmuYXYUU4owTziKe6KiiCydW2HVlH0Uo0TBtPi1WxslJqAoZakQ7TpXLlNFWA4pZakXWNId00GTTlvhh4";
+       
         var basicPlan = "price_1KCmITSI1lAYXJ13zAC34VJi";
         var proPlan =  "prod_KsXNjb3P94x9GD";
           const planId  = basicPlan;
