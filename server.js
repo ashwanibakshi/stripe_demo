@@ -1,6 +1,6 @@
 const e = require("express");
 const express = require("express");
-const stripe  = require("stripe")("");
+const stripe  = require("stripe")(process.env.secret_key)
 
 const app = express();
 
